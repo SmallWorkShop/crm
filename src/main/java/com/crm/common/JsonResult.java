@@ -20,6 +20,8 @@ public class JsonResult<E> {
         this.data = data;
     }
 
+    public JsonResult() {}
+
     public Boolean getSuccess() {
         return success;
     }

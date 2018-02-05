@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.vo.Customer" >
+    <id column="CUST_ID" property="custId" jdbcType="INTEGER" />
+    <result column="CAR_NO" property="carNo" jdbcType="VARCHAR" />
+    <result column="BRAND" property="brand" jdbcType="VARCHAR" />
+    <result column="BRAND_MODEL" property="brandModel" jdbcType="VARCHAR" />
+    <result column="CARJIA_NO" property="carjiaNo" jdbcType="VARCHAR" />
+    <result column="ENGINE_NO" property="engineNo" jdbcType="VARCHAR" />
+    <result column="ID_NO" property="idNo" jdbcType="VARCHAR" />
+    <result column="CUST_NAME" property="custName" jdbcType="VARCHAR" />
+    <result column="CUS_ADDRESS" property="cusAddress" jdbcType="VARCHAR" />
+    <result column="CUS_TEL1" property="cusTel1" jdbcType="VARCHAR" />
+    <result column="CUS_TEL2" property="cusTel2" jdbcType="VARCHAR" />
+    <result column="FISRT_DATE" property="fisrtDate" jdbcType="DATE" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CUST_ID, CAR_NO, BRAND, BRAND_MODEL, CARJIA_NO, ENGINE_NO, ID_NO, CUST_NAME, CUS_ADDRESS, 
+    CUS_TEL1, CUS_TEL2, FISRT_DATE, USER_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_Customer
+    where CUST_ID = #{custId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_Customer
+    where CUST_ID = #{custId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.vo.Customer" >
+    insert into T_Customer (CUST_ID, CAR_NO, BRAND, 
+      BRAND_MODEL, CARJIA_NO, ENGINE_NO, 
+      ID_NO, CUST_NAME, CUS_ADDRESS, 
+      CUS_TEL1, CUS_TEL2, FISRT_DATE, 
+      USER_ID)
+    values (#{custId,jdbcType=INTEGER}, #{carNo,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{brandModel,jdbcType=VARCHAR}, #{carjiaNo,jdbcType=VARCHAR}, #{engineNo,jdbcType=VARCHAR}, 
+      #{idNo,jdbcType=VARCHAR}, #{custName,jdbcType=VARCHAR}, #{cusAddress,jdbcType=VARCHAR}, 
+      #{cusTel1,jdbcType=VARCHAR}, #{cusTel2,jdbcType=VARCHAR}, #{fisrtDate,jdbcType=DATE}, 
+      #{userId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.vo.Customer" >
+    insert into T_Customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="custId != null" >
+        CUST_ID,
+      </if>
+      <if test="carNo != null" >
+        CAR_NO,
+      </if>
+      <if test="brand != null" >
+        BRAND,
+      </if>
+      <if test="brandModel != null" >
+        BRAND_MODEL,
+      </if>
+      <if test="carjiaNo != null" >
+        CARJIA_NO,
+      </if>
+      <if test="engineNo != null" >
+        ENGINE_NO,
+      </if>
+      <if test="idNo != null" >
+        ID_NO,
+      </if>
+      <if test="custName != null" >
+        CUST_NAME,
+      </if>
+      <if test="cusAddress != null" >
+        CUS_ADDRESS,
+      </if>
+      <if test="cusTel1 != null" >
+        CUS_TEL1,
+      </if>
+      <if test="cusTel2 != null" >
+        CUS_TEL2,
+      </if>
+      <if test="fisrtDate != null" >
+        FISRT_DATE,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="carNo != null" >
+        #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="brandModel != null" >
+        #{brandModel,jdbcType=VARCHAR},
+      </if>
+      <if test="carjiaNo != null" >
+        #{carjiaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="engineNo != null" >
+        #{engineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idNo != null" >
+        #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null" >
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="cusAddress != null" >
+        #{cusAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cusTel1 != null" >
+        #{cusTel1,jdbcType=VARCHAR},
+      </if>
+      <if test="cusTel2 != null" >
+        #{cusTel2,jdbcType=VARCHAR},
+      </if>
+      <if test="fisrtDate != null" >
+        #{fisrtDate,jdbcType=DATE},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.vo.Customer" >
+    update T_Customer
+    <set >
+      <if test="carNo != null" >
+        CAR_NO = #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        BRAND = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="brandModel != null" >
+        BRAND_MODEL = #{brandModel,jdbcType=VARCHAR},
+      </if>
+      <if test="carjiaNo != null" >
+        CARJIA_NO = #{carjiaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="engineNo != null" >
+        ENGINE_NO = #{engineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idNo != null" >
+        ID_NO = #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null" >
+        CUST_NAME = #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="cusAddress != null" >
+        CUS_ADDRESS = #{cusAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cusTel1 != null" >
+        CUS_TEL1 = #{cusTel1,jdbcType=VARCHAR},
+      </if>
+      <if test="cusTel2 != null" >
+        CUS_TEL2 = #{cusTel2,jdbcType=VARCHAR},
+      </if>
+      <if test="fisrtDate != null" >
+        FISRT_DATE = #{fisrtDate,jdbcType=DATE},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where CUST_ID = #{custId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.vo.Customer" >
+    update T_Customer
+    set CAR_NO = #{carNo,jdbcType=VARCHAR},
+      BRAND = #{brand,jdbcType=VARCHAR},
+      BRAND_MODEL = #{brandModel,jdbcType=VARCHAR},
+      CARJIA_NO = #{carjiaNo,jdbcType=VARCHAR},
+      ENGINE_NO = #{engineNo,jdbcType=VARCHAR},
+      ID_NO = #{idNo,jdbcType=VARCHAR},
+      CUST_NAME = #{custName,jdbcType=VARCHAR},
+      CUS_ADDRESS = #{cusAddress,jdbcType=VARCHAR},
+      CUS_TEL1 = #{cusTel1,jdbcType=VARCHAR},
+      CUS_TEL2 = #{cusTel2,jdbcType=VARCHAR},
+      FISRT_DATE = #{fisrtDate,jdbcType=DATE},
+      USER_ID = #{userId,jdbcType=INTEGER}
+    where CUST_ID = #{custId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -22,4 +22,9 @@ public class UserServiceImpl implements UserService {
     public List<User> findAllUsersByParam(String userName, String userAccount) {
         return userMapper.selectAllUsersByParam(userName,userAccount);
     }
+
+    @Override
+    public List<User> findAllUsersByCondition(User user) {
+        return userMapper.selectAllUsersByCondition(user);
+    }
 }

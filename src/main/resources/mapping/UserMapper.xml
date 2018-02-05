@@ -31,6 +31,26 @@
     </if>
   </select>
 
+  <select id="selectAllUsersByCondition" resultMap="BaseResultMap"  parameterType="com.crm.vo.User">
+    select
+    <include refid="Base_Column_List" />
+    from T_Users
+    where 1=1
+    <if test="userid != null" >
+      AND userid = #{userid,jdbcType=INTEGER},
+    </if>
+    <if test="useraccont != null" >
+      AND useraccont = #{useraccont,jdbcType=VARCHAR},
+    </if>
+    <if test="username != null" >
+      AND username =  #{username,jdbcType=VARCHAR},
+    </if>
+    <if test="upassword != null" >
+      AND upassword = #{upassword,jdbcType=VARCHAR},
+    </if>
+
+  </select>
+
 
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
